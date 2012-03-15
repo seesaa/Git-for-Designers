@@ -30,10 +30,7 @@ Git とは
 以下をコピペして PuTTY などの画面に流してください。Git 生活を快適にします。
 一気に流しても大丈夫です。また、既に設定している人が実行しても問題ありません。
 
-	git config --global color.diff   auto
-	git config --global color.status auto
-	git config --global color.branch auto
-	git config --global color.grep   auto
+	git config --global color.ui    true
 	
 	git config --global core.excludesfile $HOME/.gitignore
 	git config --global push.default current
