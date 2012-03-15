@@ -36,7 +36,7 @@ Git とは
 	echo Thumbs.db >> $HOME/.gitignore
 	git config --global core.excludesfile $HOME/.gitignore
 	
-	git config --global push.default current
+	git config --global push.default tracking
 	
 	git config --global alias.st   status
 	git config --global alias.co   checkout
