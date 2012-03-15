@@ -32,7 +32,10 @@ Git とは
 
 	git config --global color.ui    true
 	
+	echo .DS_Store >> $HOME/.gitignore
+	echo Thumbs.db >> $HOME/.gitignore
 	git config --global core.excludesfile $HOME/.gitignore
+	
 	git config --global push.default current
 	
 	git config --global alias.st   status
@@ -46,9 +49,6 @@ Git とは
 	git config --global alias.puh  push
 	git config --global alias.pl   '!git pull && git submodule update --init'
 	
-	echo .DS_Store >> $HOME/.gitignore
-	echo Thumbs.db >> $HOME/.gitignore
-
 ### エンジニアがやること
 
  * エディタの設定 (nano がおすすめ？)
