@@ -38,6 +38,8 @@ Git とは
 	
 	git config --global push.default tracking
 	
+	git config --global core.pager 'less -ReiM'
+	
 	git config --global alias.st   status
 	git config --global alias.co   checkout
 	git config --global alias.ci   commit\ -v
