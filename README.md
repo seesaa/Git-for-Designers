@@ -78,7 +78,7 @@ Git とは
 
 中央のリポジトリをクローンしてきます
 
-	% git clone --recursive git@repository01:/var/git/projects/Hatena-Project.git
+	% git clone --recursive git@src1.dev:/home/git/project.git
 
 リポジトリとサブモジュールをコピーするため、多少時間がかかります。
 
