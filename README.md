@@ -137,6 +137,164 @@ Git にこのファイルを使うように伝えます。
 
 エイリアスは多分に好みの問題なのでこの例に囚われず、自分が便利でよく使うものを思い起こしやすい名前で登録してみてください。
 
+### 上記エイリアスの解説
+
+- `st = -p status`
+
+`-p`はページャが起動する設定だが、`-F`付きのlessなので短い出力はページングなし。
+
+- `ss = -p status -s`
+
+覚え方: short status
+
+Subversionのような簡潔なステータス表示。
+
+- `co = checkout`
+
+- `ci = commit -v`
+
+- `ca = commit -av`
+
+覚え方: commit all
+
+- `cam = commit --amend -v`
+
+直前のcommitにミスや抜けがあった場合に、addしてからこれを実行する。
+
+- `di = diff`
+
+- `dc = diff --cached`
+
+覚え方: diff to commit
+
+- `br = branch`
+
+- `nbr = checkout -b`
+
+覚え方: new branch
+
+新しいブランチのスタート。
+
+- `sw = checkout`
+
+ブランチの切り替え。
+
+coがあるのに敢えてこれを設けるのは、ブランチ切り替えは重要な操作なので自覚的に行うようにするためと、コマンドライン履歴で目立たせるため。
+
+- `mup = submodule update --init`
+
+覚え方: module update
+
+- `um = !sh -c 'git pull \"$@\" && git mup' .`
+
+覚え方: upstream merge
+
+- `up = !git um --rebase`
+
+覚え方: update
+
+- `wdi = diff --word-diff`
+- `wdc = diff --word-diff --cached`
+
+「単語」単位の差分表示。
+
+標準ではスペース区切りという大雑把さなのでプログラムやHTML向きに`diff.wordRegex`を設定する。
+
+- `au = add -u`
+
+覚え方: add unstaged
+
+既存ファイルに加えた変更を一括でコミット対象としたい場合に。
+
+- `ri = rebase -i`
+
+- `rim = rebase -i master`
+
+masterから切ったブランチで、コミットを整理したいときに。
+
+- `rio = rebase -i origin`
+
+originにpushする前にコミットを整理したいときに。
+
+- `rc = rebase --continue`
+- `rab = rebase --abort`
+- `rs = rebase --skip`
+
+自分のコミットを整理するときはもちろん、複数人で作業していると他人の変更を引っ張ったときにしばしばマージが必要になる。
+
+- `chp = cherry-pick`
+
+別ブランチに行ったコミットをひとつだけ持ってきたいときに。
+
+- `unadd = reset HEAD --`
+
+addを取り消したいときに。
+
+- `rollback = reset HEAD^ --`
+
+rebaseのeditでコミットを分割したいときに有用。
+
+- `unci = reset --soft HEAD^`
+
+うっかりコミットしちゃったけどちょっと待った、というときに。
+
+- `sreset = reset --soft`
+- `hreset = reset --hard`
+
+あまり使わなくて済むことを祈る。
+
+- `ap = add -p`
+
+覚え方: add patch
+
+差分の対話的な追加。複数の変更を行ってしまったときに、部分的にコミットするために使う。
+
+- `unap = reset -p`
+
+apでやりすぎてしまった部分を対話的に取り消すのに使う。
+
+- `cop = checkout -p`
+
+デバッグコードの除去など、コミットするつもりのない変更を対話的に捨てるのに使う。
+
+- `l = log --decorate --numstat --summary`
+
+コミットメッセージと変更ファイルリストを含むログ表示。いちばんよく使う。
+
+- `ll = log --decorate --numstat --summary --pretty=fuller -p`
+
+パッチ付きのログ。差分も見たいときに。
+
+- `wll = log --decorate --numstat --summary --pretty=fuller -p --word-diff`
+
+差分を単語単位で。
+
+- `ol = log --oneline --decorate`
+
+一コミット一行で履歴を眺めたいときに。
+
+- `t = log --graph --oneline --decorate`
+
+覚え方: tree
+
+コミットのブランチ間マージの様子が見られる。
+
+- `g = grep`
+
+検索はみんな大好き。
+
+- `xl = stash list`
+- `xi = stash save`
+- `xo = stash pop`
+- `xd = stash drop`
+- `xa = stash apply`
+- `xs = stash show`
+- `xp = stash show -p`
+
+stashを使いこなすための簡易なエイリアスたち。
+
+popという用語はpushとの連関で混乱を招きやすいが、こうしてin/outに言い換えれば間違えない。
+
 最低限のワークフロー
 --------------------
 
