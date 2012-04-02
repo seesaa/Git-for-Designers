@@ -31,8 +31,6 @@ bash を使っている（標準）場合は `~/.bash_profile` に、
 zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
 以下を記述（追記）しておきます。
 
-	export PATH=$HOME/bin:$PATH
-
 	export PAGER=`which less`
 	export LESS=-ReiM
 
