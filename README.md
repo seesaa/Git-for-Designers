@@ -91,6 +91,9 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
 	git config --global alias.up  !git um --rebase
 
+	git config --global diff.wordRegex "$(printf '[@$%%]*[[:alnum:]_]+|[^\n]')"
+	git config --global alias.wdi 'diff --word-diff'
+	git config --global alias.wdc 'diff --word-diff --cached'
 
 最低限のワークフロー
 --------------------
