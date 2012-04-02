@@ -368,6 +368,19 @@ popという用語はpushとの連関で混乱を招きやすいが、こうし�
 
 上のようなメッセージが出た場合は、pull で更新されるファイルが手元で修正されていて、まだコミットされていません。変更をコミットしてからもう一度 `git pull` しなおして下さい。
 
+またはコミットしていない変更を「しまって（`git stash`）」おき、pullしてから「取り出す（`git stash pop`）」方法もあります。上の方でエイリアスを設定した場合は`git xi`/`git xo`で行けます。
+
+	% git xi
+    Saved working directory and index state WIP on master: 6e5c56e Adjust spaces.
+    HEAD is now at 6e5c56e Adjust spaces.
+    % git up
+	...
+    % git xo
+	...
+	Dropped refs/stash@{0} (66d765acabf5b12e65fe6553e0b2847619ff679e)
+
+pull（umやup）でリモートからコミットを持ってくると、自分の手元の変更と衝突することがあります。
+
 	Auto-merging templates/index.html
 	CONFLICT (content): Merge conflict in templates/index.html
 	Automatic merge failed; fix conflicts and then commit the result.
