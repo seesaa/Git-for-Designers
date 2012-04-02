@@ -9,11 +9,11 @@ Git とは
 
 概念図
 
-	　　 ∧＿∧     　　　　　　∧＿∧     
-	　　（　´∀｀） ―push→　（　・∀・） 
+	　　 ∧＿∧     　　　　　　∧＿∧
+	　　（　´∀｀） ―push→　（　・∀・）
 	　　（　　　　） ←pull―　 .（　　　　）
 	　　｜ ｜　| 　　　　　　　.｜ ｜　|
-	　　（_＿）＿） 　　　　　　 （_＿）＿） 
+	　　（_＿）＿） 　　　　　　 （_＿）＿）
 
 最初に！
 -------
@@ -32,10 +32,10 @@ zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
 以下を記述（追記）しておきます。
 
 	export PATH=$HOME/bin:$PATH
-	
+
 	export PAGER=``which less``
 	export LESS=-ReiM
-	
+
 	export EDITOR=``which nano``
 
 ここの `PAGER` は長すぎるコマンド出力をページングして読むためのツールの指定です。
@@ -73,11 +73,11 @@ Git にこのファイルを使うように伝えます。
 一気に流しても大丈夫です。また、既に設定している人が実行しても問題ありません。
 
 	git config --global color.ui    true
-	
+
 	git config --global push.default tracking
-	
+
 	git config --global core.pager 'less -FSX'
-	
+
 	git config --global alias.st  '-p status'
 	git config --global alias.co   checkout
 	git config --global alias.ci   commit\ -v
@@ -90,12 +90,12 @@ Git にこのファイルを使うように伝えます。
 	git config --glocal alias.mup 'submodule update --init'
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
 	git config --global alias.up  !git um --rebase
-	
+
 
 最低限のワークフロー
 --------------------
 
- 1. リポジトリをクローン: `git clone` 
+ 1. リポジトリをクローン: `git clone`
  2. 他人の変更を取得: `git pull`
  3. ファイルを変更/追加: `git add`
  4. 変更をコミット: `git commit`
