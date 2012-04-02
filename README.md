@@ -100,15 +100,16 @@ Git にこのファイルを使うように伝えます。
 
  1. リポジトリをクローン: `git clone`
  2. 他人の変更を取得: `git pull`
- 3. ファイルを変更/追加: `git add`
- 4. 変更をコミット: `git commit`
+ 3. ファイルを変更/追加: `git add file1`
+ 4. 変更をコミット: `git ci` (=`git commit -v`)
  5. コミットを送信: `git push`
  6. 2 へ
 
 以下は適宜
 
- * 作業の合間合間に: `git status`
- * ブランチを切り替える: `git checkout`
+ * 作業の合間合間に: `git st` (=`git -p status`)
+ * ブランチを切り替える: `git sw branch1` (=`git checkout branch1`)
+ * ブランチを戻る: `git sw -` (=`git checkout -`)
 
 ### git clone (最初の 1 回だけ)
 
