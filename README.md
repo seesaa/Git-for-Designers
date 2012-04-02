@@ -350,6 +350,17 @@ popという用語はpushとの連関で混乱を招きやすいが、こうし�
 
 手元のファイルがブランチの最新の状態になります。
 
+なお、`git pull`と`git pull --rebase`の違いはこうです。
+
+- `git pull`: `git fetch` + `git merge` = リモートから取ってきた新しいコミットをローカルに当てる
+
+  どちらかというと、あまりフィードバック（push）する気がない変更を抱えたままリモートのコミットを取り込んで追いかけていくというときに使います。
+
+- `git pull --rebase`: `git fetch` + `git rebase` = ローカルの独自コミットを、リモートの最新の内容に当て直す
+
+  どちらかというと、手元の変更をいつでもフィードバック（push）できるように更新しつつリモートのコミットを取り込んで追いかけていくときに使います。
+  理由は省略しますが、マージの手間はこちらの方が掛かります。ただ、自分が開発者の一員の場合はこちらを使い、いいタイミングでpushしましょう。
+
 #### pull 時のトラブル
 
 	error: Your local changes to 'templates/index.html' would be overwritten by merge.  Aborting.
