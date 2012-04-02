@@ -87,7 +87,9 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.psuh push
 	git config --global alias.pus  push
 	git config --global alias.puh  push
-	git config --global alias.pl   '!git pull && git submodule update --init'
+	git config --glocal alias.mup 'submodule update --init'
+	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
+	git config --global alias.up  !git um --rebase
 	
 
 最低限のワークフロー
