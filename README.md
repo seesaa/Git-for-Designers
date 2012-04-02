@@ -48,7 +48,7 @@ zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
 
 	nano ~/.gitignore
 
-以下をコピペしてセーブ（Ctrl+O, Enter）し、閉じます（Ctrl+X）。
+以下をコピペしてセーブ（<kbd>Ctrl+O</kbd>, <kbd>Enter</kbd>）し、閉じます（<kbd>Ctrl+X</kbd>）。
 
 	*.o
 	*.lo
