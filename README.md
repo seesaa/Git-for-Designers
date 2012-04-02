@@ -79,14 +79,14 @@ Git にこのファイルを使うように伝えます。
 	git config --global core.pager 'less -FSX'
 
 	git config --global alias.st  '-p status'
+	git config --global alias.ss  '-p status -s'
 	git config --global alias.co   checkout
-	git config --global alias.ci   commit\ -v
+	git config --global alias.ci  'commit -v'
+	git config --global alias.ca  'commit -av'
 	git config --global alias.di   diff
+	git config --global alias.dc  'diff --cached'
 	git config --global alias.br   branch
-	git config --global alias.puhs push
-	git config --global alias.psuh push
-	git config --global alias.pus  push
-	git config --global alias.puh  push
+	git config --global alias.sw   checkout
 	git config --glocal alias.mup 'submodule update --init'
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
 	git config --global alias.up  !git um --rebase
