@@ -1,4 +1,4 @@
-デザイナのための Git
+aaaデザイナのための Git
 ====================
 
 Git とは
@@ -33,10 +33,10 @@ zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
 
 	export PATH=$HOME/bin:$PATH
 
-	export PAGER=``which less``
+	export PAGER=`which less`
 	export LESS=-ReiM
 
-	export EDITOR=``which nano``
+	export EDITOR=`which nano`
 
 ここの `PAGER` は長すぎるコマンド出力をページングして読むためのツールの指定です。
 `man ls` としてマニュアルページを読むときなどに使われます。
