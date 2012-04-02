@@ -25,6 +25,25 @@ Git とは
 
 バージョン番号が 1.6.5.3 より以前の場合は、最寄りのエンジニアを呼んでバージョンを上げてもらって下さい。便利な機能が使えるようになります。
 
+### シェル環境を整える
+
+bash を使っている（標準）場合は `~/.bash_profile` に、
+zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
+以下を記述（追記）しておきます。
+
+	export PATH=$HOME/bin:$PATH
+	
+	export PAGER=``which less``
+	export LESS=-ReiM
+	
+	export EDITOR=``which nano``
+
+ここの `PAGER` は長すぎるコマンド出力をページングして読むためのツールの指定です。
+`man ls` としてマニュアルページを読むときなどに使われます。
+
+また、 `EDITOR` は Subversion や Git のコミットログの入力時などに起動されるエディタの指定です。
+プログラマー以外は nano が簡単でおすすめです。
+
 ### 便利な設定をしておく
 
 以下をコピペして PuTTY などの画面に流してください。Git 生活を快適にします。
@@ -38,9 +57,9 @@ Git とは
 	
 	git config --global push.default tracking
 	
-	git config --global core.pager 'less -ReiM'
+	git config --global core.pager 'less -FSX'
 	
-	git config --global alias.st   status
+	git config --global alias.st  '-p status'
 	git config --global alias.co   checkout
 	git config --global alias.ci   commit\ -v
 	git config --global alias.di   diff
@@ -51,9 +70,6 @@ Git とは
 	git config --global alias.puh  push
 	git config --global alias.pl   '!git pull && git submodule update --init'
 	
-### エンジニアがやること
-
- * エディタの設定 (nano がおすすめ？)
 
 最低限のワークフロー
 --------------------
