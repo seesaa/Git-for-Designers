@@ -69,7 +69,7 @@ Git にこのファイルを使うように伝えます。
 
 	git config --global core.excludesfile ~/.gitignore
 
-以下をコピペして PuTTY などの画面に流してください。Git 生活を快適にします。
+以下をコピペしてターミナル画面に流してください。Git 生活を快適にします。
 一気に流しても大丈夫です。また、既に設定している人が実行しても問題ありません。
 
 	git config --global color.ui    true
