@@ -141,7 +141,7 @@ Git にこのファイルを使うように伝えます。
 --------------------
 
  1. リポジトリをクローン: `git clone`
- 2. 他人の変更を取得: `git pull`
+ 2. 他人の変更を取得: `git up` (=`git pull --rebase`)
  3. ファイルを変更/追加: `git add file1`
  4. 変更をコミット: `git ci` (=`git commit -v`)
  5. コミットを送信: `git push`
@@ -171,7 +171,7 @@ Git にこのファイルを使うように伝えます。
 
 キーワードの最初の設定をしていれば、以下の 1 コマンドで OK です。
 
-	% git pl
+	% git up
 
 	remote: Counting objects: 6453, done.
 	remote: Compressing objects: 100% (6053/6053), done.
@@ -187,7 +187,7 @@ Git にこのファイルを使うように伝えます。
 
 設定をしていない場合、以下を実行してください。
 
-	% git pull
+	% git pull --rebase
 	% git submodule update --init
 
 手元のファイルがブランチの最新の状態になります。
