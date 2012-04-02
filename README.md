@@ -95,6 +95,15 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.wdi 'diff --word-diff'
 	git config --global alias.wdc 'diff --word-diff --cached'
 
+	git config --global alias.l   'log --decorate --numstat --summary'
+	git config --global alias.ll  'log --decorate --numstat --summary --pretty=fuller -p'
+	git config --global alias.wll 'log --decorate --numstat --summary --pretty=fuller -p --word-diff'
+	git config --global alias.ol  'log --oneline --decorate'
+	git config --global alias.t	  'log --graph --oneline --decorate'
+	git config --global alias.lt  'log --graph --oneline --decorate --numstat --summary'
+
+後半は多分に好みの問題なのでこの例に囚われず、自分が便利でよく使うものを思い起こしやすい名前で登録してみてください。
+
 最低限のワークフロー
 --------------------
 
