@@ -46,14 +46,33 @@ zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
 
 ### 便利な設定をしておく
 
+まず、 Git に無視してほしいファイルの名前パターンを設定します。エディタを起動し、
+
+	nano ~/.gitignore
+
+以下をコピペしてセーブ（Ctrl+O, Enter）し、閉じます（Ctrl+X）。
+
+	*.o
+	*.lo
+	*.la
+	#*#
+	.*.rej
+	*.rej
+	.*~
+	*~
+	.#*
+	.DS_Store
+	*.sw[po]
+	Thumbs.db
+
+Git にこのファイルを使うように伝えます。
+
+	git config --global core.excludesfile ~/.gitignore
+
 以下をコピペして PuTTY などの画面に流してください。Git 生活を快適にします。
 一気に流しても大丈夫です。また、既に設定している人が実行しても問題ありません。
 
 	git config --global color.ui    true
-	
-	echo .DS_Store >> $HOME/.gitignore
-	echo Thumbs.db >> $HOME/.gitignore
-	git config --global core.excludesfile $HOME/.gitignore
 	
 	git config --global push.default tracking
 	
