@@ -387,23 +387,15 @@ pull（umやup）でリモートからコミットを持ってくると、自分
 
 上のようなメッセージが出た場合は、他の人が行った変更と手元でコミットした内容がコンフリクトしています。量が多すぎる、訳がわからない、修正できるか自信がない場合は、以下のコマンドを実行して中止し、エンジニアに尋ねてください。
 
-	% git reset --hard
+	% git hreset
 
-### git checkout (ブランチを切り替える/作成する)
+### git checkout (ブランチを切り替える)
 
 同じリポジトリで複数のブランチを並行して開発できるのが git の便利な点です。常に master ブランチが本番に反映されます。開発は master 以外のブランチで行い、適宜 master にマージして反映、というのが開発の流れです。開発中は複数のブランチを渡り歩くことになるかもしれません。
 
-作業ブランチを切り替えたい場合は
+作業ブランチを切り替えたい場合はブランチ名を指定して `git sw` (=`git checkout`) コマンドを呼びます。
 
-	% git checkout branch-name
-
-ブランチ名を指定して `git checkout` コマンドを呼びます。
-
-新しい機能の開発などで、エンジニアが push したブランチが手元にまだ出来ていない場合は
-
-	% git checkout -t origin/branch-name
-
-とします。
+	% git sw branch-name
 
 checkout 直後は submodule の更新が必要な場合があります。
 
@@ -412,7 +404,7 @@ checkout 直後は submodule の更新が必要な場合があります。
 
 のように表示されたら、以下のコマンドで submodule を更新してください。
 
-	git submodule update --init
+	% git mup
 
 ### git add (コミットするファイルを追加する)
 
@@ -428,9 +420,11 @@ checkout 直後は submodule の更新が必要な場合があります。
 
 ### git status (作業状況を確認する)
 
-現在の作業状況を確認するには、`git status` というコマンドを使います。英語のメッセージですが、読んで下さい。一行一行に意味があります。
+現在の作業状況を確認するには、`git status` というコマンドを使います。頻繁に使う割に長いので、先ほど`st`というエイリアスを作りました。
 
-	% git status
+出力は英語のメッセージですが、読んで下さい。一行一行に意味があります。
+
+	% git st
 
 まっさらな状態では、以下のような出力になります。
 
@@ -462,9 +456,9 @@ master ブランチで作業中に新しいファイル static/images/hoge.gif �
 
 編集したけれどその変更が Git に伝わっていないファイルとして、static/images/spacer.gif がリストされています。先ほどと同じ 3 行目の指示に加え 4 行目にも指示がありますがまあ試してみてください (変更が元に戻ります)。最後の行は、今のままではコミットするものがないので `git add` してくださいといっています。(`git commit -a` は、はてな的に非推奨です。見なかったことにしてください)
 
-git add static/images/spacer.gif などで変更を Git に通知してやると、`git status` の結果は以下のようになります。
+git add static/images/spacer.gif などで変更を Git に通知してやると、`git st` の結果は以下のようになります。
 
-	% git status
+	% git st
 	# On branch master
 	# Changes to be committed:
 	#   (use "git reset HEAD <file>..." to unstage)
@@ -525,7 +519,7 @@ push したつもりがエラーが出て push できていないこともある
 	To git://src1.dev/proj1
 	   1ede18e..c6fa4c4  HEAD -> master
 
-以下のように出たときは push に失敗しています！他の人が同じブランチに先に push していた場合、この表示になります。一度 pull してから push しなおしてみて下さい。
+以下のように出たときは push に失敗しています！他の人が同じブランチに先に push していた場合、この表示になります。一度 pull (up) してから push しなおしてみて下さい。
 
 	% git push
 	To git://src1.dev/proj1
@@ -542,9 +536,11 @@ push したつもりがエラーが出て push できていないこともある
 
 ### 変更履歴がみたい
 
-#### `git log --stat`
+#### `git log`
 
-TBD
+作業を始める前や、pullした直後、pushする前など、適宜`git log`で履歴を確認します。
+
+先のエイリアスを活用し、`git l`と`git ll`で大概の用は済みます。
 
 #### tig を使う
 
@@ -609,23 +605,23 @@ theme ブランチに行うべき変更を master ブランチにコミットし
 
 (theme ブランチに戻る)
 
-	% git checkout theme
+	% git sw theme
 
 (master の最新のコミット=誤った変更を theme ブランチに適用)
 
-	% git cherry-pick master
+	% git chp master
 
 (master の最新のコミットを巻き戻す)
 
 	% git revert master
 
-これで完了です。コンフリクトが発生するなどして分からなくなったら、`git reset --hard` してエンジニアを呼んでください。
+これで完了です。コンフリクトが発生するなどして分からなくなったら、`git hreset` してエンジニアを呼んでください。
 
 ### あの言葉が入ったファイルを探す
 
-`git grep '<var>word</var>'` で、リポジトリ内からその単語を含むファイルと行を表示できます。ふつうに検索すると、アプリのコードも検索されてしまうので最後にディレクトリ名を加えて以下のようにするのがいいです。
+`git g '<var>word</var>'` で、リポジトリ内からその単語を含むファイルと行を表示できます。ふつうに検索すると、アプリのコードも検索されてしまうので最後にディレクトリ名を加えて以下のようにするのがいいです。
 
-	% git grep 'TODO' templates
+	% git g 'TODO' templates
 
 	templates/ch.html:[% # TODO : 外部化したい %]
 	templates/campaign.html:            [% #TODO このテーマを使うボタンが動かない %]
