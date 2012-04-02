@@ -161,7 +161,7 @@ Git にこのファイルを使うように伝えます。
 
 中央のリポジトリをクローンしてきます
 
-	% git clone --recursive git@src1.dev:/home/git/project.git
+	% git clone --recursive git://src1.dev/proj1
 
 リポジトリとサブモジュールをコピーするため、多少時間がかかります。
 
@@ -178,7 +178,7 @@ Git にこのファイルを使うように伝えます。
 	remote: Total 6269 (delta 3881), reused 0 (delta 0)
 	Receiving objects: 100% (6269/6269), 744.80 KiB | 137 KiB/s, done.
 	Resolving deltas: 100% (3881/3881), completed with 101 local objects.
-	From repository01:/var/git/projects/Hatena-Project
+	From git://src1.dev/proj1
 	   68f83fa..41414d4  master     -> origin/master
 	 * [new branch]      split      -> origin/split
 	   9772205..3dfd8f3  testable   -> origin/testable
@@ -340,15 +340,15 @@ push したつもりがエラーが出て push できていないこともある
 	Compressing objects: 100% (13/13), done.
 	Writing objects: 100% (13/13), 1.58 KiB, done.
 	Total 13 (delta 10), reused 0 (delta 0)
-	To git@repository01:/var/git/projects/Hatena-Project
+	To git://src1.dev/proj1
 	   1ede18e..c6fa4c4  HEAD -> master
 
 以下のように出たときは push に失敗しています！他の人が同じブランチに先に push していた場合、この表示になります。一度 pull してから push しなおしてみて下さい。
 
 	% git push
-	To git@repository01:/var/git/projects/Hatena-Project
+	To git://src1.dev/proj1
 	 ! [rejected]        HEAD -> master (non-fast-forward)
-	error: failed to push some refs to 'git@repository01:/var/git/projects/Hatena-Project'
+	error: failed to push some refs to 'git://src1.dev/proj1'
 	To prevent you from losing history, non-fast-forward updates were rejected
 	Merge the remote changes before pushing again.  See the 'Note about
 	fast-forwards' section of 'git push --help' for details.
