@@ -556,7 +556,7 @@ Emacsを使っている人は[magit](https://github.com/magit/magit)がおすす
 
 ### コンフリクトの解消
 
-`git pull` や `git merge` でコンフリクトが発生し、自分の手で解決したい場合。
+`git pull` や `git merge` や  `git rebase` でコンフリクトが発生し、自分の手で解決したい場合。
 `git status` すると、コンフリクトしたファイルが赤く表示されます。
 
 	% git status
