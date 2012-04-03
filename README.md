@@ -15,12 +15,14 @@ Git とは
 　　∧＿∧　　　　　　　　∧＿∧　　　　　　　　　 ∧＿∧　　　　　　　　　　　 ∧＿∧
 　 （　´∀｀）　─add→　（´∀｀　） ─commit→ （　´∀｀）　──push─→　（　・∀・）
 　 （　　つつ　　　　　　 ⊂　　　　つ　　　　　　　 （ HEAD） ←─fetch──　（　　　　）
-　　） 　） ）　　←diff→　 （　（　 （　←diff　　　　 ｜ ｜　|　(remote update) ｜ ｜　|
-　（＿_）__）　　　　　　　 　（＿（＿）　--cached→（_＿）＿）　　　　　　　　　　 （_＿）＿）
+　　） 　） ）←checkout─（　（　 （　←reset─　 ｜ ｜　|　(remote update) ｜ ｜　|
+　（＿_）__）　　　　　　　 　（＿（＿）　　　　　　　　（_＿）＿）　　　　　　　　　　 （_＿）＿）
 作業エリア　　　　　　　 予約エリア　　　　　自分のレポジトリ　　　　　　リモートレポジトリ
- work tree　　　　　　　 stage/index　　　　　local repository　　　　　 　remote repository
-　　　↑ 　 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　│
-　　　└───────────pull (--rebase)───────────┘
+ work tree　　　　　　　 stage (index)　　　　 local repository　　　　　 　remote repository
+　　　↑↑ 　 　 　 　 　 　 　　　　　　　　　　　　　 │ ↑ 　　　　　　　　　　　　　│
+　　　│└─────checkout HEAD────┘ │ 　　　　　　　　　　　　　│
+　　　└──────────────────┴pull (--rebase)───┘
+　　　┠───diff────╂─diff --cached──┨
 ](https://github.com/seesaa/Git-for-Designers/raw/master/images/figure1.png)
 
 最初に！
