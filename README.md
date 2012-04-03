@@ -428,9 +428,12 @@ checkout 直後は submodule の更新が必要な場合があります。
 
 `git add` は通常何の出力も返さないので、次の項でふれる `git status` で状態を確認してください。
 
-### git status (作業状況を確認する)
+なお、非常に便利な機能として `git ap` (=`git add -p`) があります。これを使うと、編集箇所ごとに違いを目で確認しながら部分ごとにaddしていくことができます。
+使い方についてはエンジニアから講習を受け、ぜひ使えるようになってください。
 
-現在の作業状況を確認するには、`git status` というコマンドを使います。頻繁に使う割に長いので、先ほど`st`というエイリアスを作りました。
+### git status/git diff (作業状況を確認する)
+
+現在のファイル単位の作業状況を確認するには、`git status` というコマンドを使います。頻繁に使う割に長いので、先ほど`st`というエイリアスを作りました。
 
 出力は英語のメッセージですが、読んで下さい。一行一行に意味があります。
 
@@ -460,13 +463,21 @@ master ブランチで作業中に新しいファイル static/images/hoge.gif �
 	#   (use "git add <file>..." to update what will be committed)
 	#   (use "git checkout -- <file>..." to discard changes in working directory)
 	#
+	#       modified:   static/css/common.css
 	#       modified:   static/images/spacer.gif
 	#
 	no changes added to commit (use "git add" and/or "git commit -a")
 
-編集したけれどその変更が Git に伝わっていないファイルとして、static/images/spacer.gif がリストされています。先ほどと同じ 3 行目の指示に加え 4 行目にも指示がありますがまあ試してみてください (変更が元に戻ります)。最後の行は、今のままではコミットするものがないので `git add` してくださいといっています。(`git commit -a` は、はてな的に非推奨です。見なかったことにしてください)
+編集したけれどその変更が Git に伝わっていないファイルとして、static/css/common.css と static/images/spacer.gif がリストされています。先ほどと同じ 3 行目の指示に加え 4 行目にも指示がありますがまあ試してみてください (変更が元に戻ります)。最後の行は、今のままではコミットするものがないので `git add` してくださいといっています。
 
-git add static/images/spacer.gif などで変更を Git に通知してやると、`git st` の結果は以下のようになります。
+ファイルが具体的にどう編集されているのかを確認するには、 `git diff` を使います。先ほど短いエイリアス `git di` を付けたので、こまめに実行して確認してみましょう。
+残念ながら画像はターミナル上で違いを見ることはできませんが、テキストファイルについては行単位でどう変わったかが表示されるので、目を凝らしてよくチェックしてみてください。
+
+なお、ファイルの種類によっては、行単位では違いがわかりにくいことがあります。
+たとえばHTMLファイルは、行というよりはタグが集まって構成されており、またそのタグも属性が同じ行に並んでいます。
+こういうファイルの差分を読むときは、単語単位で差分を表示する`git wdi`を使ってみてください。タグの属性値を変えただけなどの場合は違いが一目瞭然です。
+
+さて、`git add static/images/spacer.gif` などで変更を Git に通知してやると、`git st` の結果は以下のようになります。
 
 	% git st
 	# On branch master
