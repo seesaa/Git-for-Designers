@@ -10,19 +10,20 @@ Git とは
 概念図
 
 ![
-　　　　┌──────commit -a──────┐
-　　　　│ 　 　 　 　　　　　　　　　　　　　　　　　　　↓　　　　　　　　　　　　　　origin
-　　∧＿∧　　　　　　　　∧＿∧　　　　　　　　　 ∧＿∧　　　　　　　　　　　 ∧＿∧
-　 （　´∀｀）　─add→　（´∀｀　） ─commit→ （　´∀｀）　──push─→　（　・∀・）
-　 （　　つつ　　　　　　 ⊂　　　　つ　　　　　　　 （ HEAD） ←─fetch──　（　　　　）
-　　） 　） ）←checkout─（　（　 （　←reset─　 ｜ ｜　|　(remote update) ｜ ｜　|
-　（＿_）__）　　　　　　　 　（＿（＿）　　　　　　　　（_＿）＿）　　　　　　　　　　 （_＿）＿）
+　　　　┌── commit -a / commit *file* ───┐
+　　　　│ 　 　 　 　 　　　　　　　　　　　　　　　　　　↓　　　　　　　　　　　　　　origin
+　　∧＿∧　　　　　　　　∧＿∧ 　 　　　　　　　 ∧＿∧　　　　　　　　　　　　∧＿∧
+　 （　´∀｀）　─add→　（´∀｀　） ─commit→ （　´∀｀）　──push─→　 （　・∀・）
+　 （　　つつ　　　　　　 ⊂　　　　つ　　　　　　　 （ HEAD）　　　　　　　　　　　（　　　　）
+　　） 　） ）←checkout─（　（　 （&thinsp;←reset --&thinsp;─｜ ｜　|　 ←─fetch──　 ｜ ｜　|
+　（＿_）__）　　　　　　　 　（＿（＿） 　 　 　　　　 （_＿）＿） （remote update) （_＿）＿）
 作業エリア　　　　　　　 予約エリア　　　　　自分のレポジトリ　　　　　　リモートレポジトリ
- work tree　　　　　　　 stage (index)　　　　 local repository　　　　　 　remote repository
-　　　↑↑ 　 　 　 　 　 　 　　　　　　　　　　　　　 │ ↑ 　　　　　　　　　　　　　│
-　　　│└─────checkout HEAD────┘ │ 　　　　　　　　　　　　　│
-　　　└──────────────────┴pull (--rebase)───┘
-　　　┠───diff────╂─diff --cached──┨
+&nbsp;work tree　　　　　　　 stage (index)　　　　 local repository　　　　　 　remote repository
+　　　↑↑ 　 　 　 　　　　　　　　　　　　　　　　　&emsp;│↑ 　　　　　　　　　　　　　│
+　　　│└────&thinsp;　checkout&ensp;HEAD &thinsp;────┘│ 　　　　　　　　　　　　　│
+　　　└──────────────────┴&thinsp;pull / pull --rebase&thinsp;─┘
+　　　┠───&nbsp;&thinsp;diff&ensp;───╂─&ensp;diff&ensp;--cached&ensp;─┨　　※pull　　　　　　 ≒ fetch + merge
+　　　┠───────&ensp;diff HEAD&ensp;──────┨　　※pull --rebase ≒ fetch + rebase
 ](https://github.com/seesaa/Git-for-Designers/raw/master/images/figure1.png)
 
 最初に！
