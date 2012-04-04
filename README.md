@@ -119,7 +119,7 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.rs  'rebase --skip'
 	git config --global alias.chp  cherry-pick
 
-	git config --global alias.unadd    'reset HEAD --'
+	git config --global alias.unadd    'reset --'
 	git config --global alias.rollback 'reset HEAD^ --'
 	git config --global alias.unci     'reset --soft HEAD^'
 	git config --global alias.sreset   'reset --soft'
@@ -237,9 +237,10 @@ Git にこのファイルを使うように伝えます。
 
     別ブランチに行ったコミットをひとつだけ持ってきたいときに。
 
-- `unadd = reset HEAD --`
+- `unadd = reset --`
 
-    addを取り消したいときに。
+    addを取り消したいときに。`git reset`は`git reset HEAD`と同じです。
+    `--`の後にはファイル名やディレクトリ名を指定できます。
 
 - `rollback = reset HEAD^ --`
 
