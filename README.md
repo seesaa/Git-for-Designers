@@ -122,7 +122,6 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.unadd    'reset --'
 	git config --global alias.rollback 'reset HEAD^ --'
 	git config --global alias.unci     'reset --soft HEAD^'
-	git config --global alias.sreset   'reset --soft'
 	git config --global alias.hreset   'reset --hard'
 
 	git config --global alias.ap   'add -p'
@@ -250,7 +249,6 @@ Git にこのファイルを使うように伝えます。
 
     うっかりコミットしちゃったけどちょっと待った、というときに。
 
-- `sreset = reset --soft`
 - `hreset = reset --hard`
 
     あまり使わなくて済むことを祈る。
