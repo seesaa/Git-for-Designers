@@ -19,7 +19,7 @@ Git とは
 　（＿_）__）　　　　　　　 　（＿（＿） 　 　 　　　　 （_＿）＿） （remote update) （_＿）＿）
 作業エリア　　　　　　　 予約エリア　　　　　自分のレポジトリ　　　　　　リモートレポジトリ
 &nbsp;work tree　　　　　　　 stage (index)　　　　 local repository　　　　　 　remote repository
-　　　↑↑ 　 　 　 　　　　　　　　　　　　　　　　　&emsp;│↑ 　　　　　　　　　　　　　│
+　　　↑↑ 　 　 　　　　　　　↑　　　　　　　　　　&emsp;│↑ 　　　　　　　　　　　　　│
 　　　│└────&thinsp;　checkout&ensp;HEAD &thinsp;────┘│ 　　　　　　　　　　　　　│
 　　　└──────────────────┴&thinsp;pull / pull --rebase&thinsp;─┘
 　　　┠───&nbsp;&thinsp;diff&ensp;───╂─&ensp;diff&ensp;--cached&ensp;─┨　　※pull　　　　　　 ≒ fetch + merge
