@@ -397,7 +397,7 @@ Git にこのファイルを使うように伝えます。
 	...
 	Dropped refs/stash@{0} (66d765acabf5b12e65fe6553e0b2847619ff679e)
 
-pull（umやup）でリモートからコミットを持ってくると、自分の手元の変更と衝突することがあります。
+pull（umやup）でリモートからコミットを持ってくると、自分の手元の変更とコンフリクト（衝突）することがあります。
 
 	Auto-merging templates/index.html
 	CONFLICT (content): Merge conflict in templates/index.html
@@ -615,7 +615,9 @@ Emacsを使っている人は[magit](https://github.com/magit/magit)がおすす
 
 "=======" を挟んで "HEAD" とある側が自分の変更、反対側が相手の変更です。意図を読むか相談するかして、二つの変更を手動でマージします。分からなくなった場合は、いつでも `git hreset` してエンジニアを呼んでください。
 
-この例だとこれが正しそうです。
+Emacsでは、コンフリクトしたファイルを開いた状態で `M-x vc-resolve-conflicts` でそのファイルの衝突を解決することができるほか、 `magit-status` 画面で `M-x magit-interactive-resolve-item` とするとコンフリクトファイルについて順次解決を促されます。
+
+上の例だと、こうするのが正しそうです。
 
 	    <div class="container">[% IF foobar %]
 
