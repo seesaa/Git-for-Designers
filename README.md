@@ -615,7 +615,7 @@ Emacsを使っている人は[magit](https://github.com/magit/magit)がおすす
 
 "=======" を挟んで "HEAD" とある側が自分の変更、反対側が相手の変更です。意図を読むか相談するかして、二つの変更を手動でマージします。分からなくなった場合は、いつでも `git hreset` してエンジニアを呼んでください。
 
-Emacsでは、コンフリクトしたファイルを開いた状態で `M-x vc-resolve-conflicts` でそのファイルの衝突を解決することができるほか、 `magit-status` 画面で `M-x magit-interactive-resolve-item` とするとコンフリクトファイルについて順次解決を促されます。
+Emacsでは、コンフリクトしたファイルを開いた状態で `M-x vc-resolve-conflicts` とするか、 `magit-status` の画面でコンフリクトしたファイルにカーソルを合わせて `M-x magit-interactive-resolve-item` とすると、対話的な操作でファイルの衝突を解決することができます。
 
 上の例だと、こうするのが正しそうです。
 
