@@ -39,7 +39,7 @@ Git とは
 ### シェル環境を整える
 
 bash を使っている（標準）場合は `~/.bash_profile` に、
-zsh  を使っている場合は `$ZDOTDIR/.zshrc` などに、
+zsh  を使っている場合は `~/.zshenv` などに、
 以下を記述（追記）しておきます。
 
 	export PAGER=`which less`
