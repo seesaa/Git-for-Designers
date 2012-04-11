@@ -101,9 +101,9 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.nbr 'checkout -b'
 	git config --global alias.sw   checkout
 
-	git config --glocal alias.mup 'submodule update --init'
+	git config --global alias.mup 'submodule update --init'
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
-	git config --global alias.up  !git um --rebase
+	git config --global alias.up  '!git um --rebase'
 
 	git config --global diff.wordRegex "$(printf '[@$%%]*[[:alnum:]_]+|[^\n]')"
 	git config --global alias.wdi 'diff --word-diff'
@@ -111,7 +111,7 @@ Git にこのファイルを使うように伝えます。
 
 	git config --global alias.au  'add -u'
 
-	git config --global alias.ri  'rebase -i
+	git config --global alias.ri  'rebase -i'
 	git config --global alias.rio 'rebase -i origin'
 	git config --global alias.rim 'rebase -i master'
 	git config --global alias.rc  'rebase --continue'
