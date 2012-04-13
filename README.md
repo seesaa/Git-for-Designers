@@ -564,6 +564,145 @@ push したつもりがエラーが出て push できていないこともある
 	Merge the remote changes before pushing again.  See the 'Note about
 	fast-forwards' section of 'git push --help' for details.
 
+よくある開発のワークフロー
+--------------------------
+
+まず、自分の作業環境（MacBook, シェルサーバなど）にブランチを作ります。
+
+リポジトリをクローン:
+
+    sh% git clone git://src1.dev/proj1
+
+ここでは、メインブランチを`master`とします。
+
+そこから開発する機能（あるいはバグ修正）用のブランチを作成して切り替えます。
+
+    sh% git nbr taro-feature1 master
+
+※自分のアカウント名を入れると分かりやすく、ぶつかる危険もないのでおすすめです。
+
+リモートにブランチをプッシュ:
+
+    sh% git push -u origin taro-feature1
+
+開発用の実行環境にログインし、作ったブランチを取得して切り替えます。
+
+    dev% cd /home/seesaa/proj1
+    dev% git nbr taro-feature1 origin/taro-feature1
+
+ここまでが最初にやることで、あとは以下を繰り返します。
+
+作業環境でファイルを編集してcommitし、確認したいところでpushします。
+
+    sh% edit ...
+    sh% git add ...
+    sh% git ci
+    ...
+
+    sh% git push
+
+※さっき `git push -u ...` としておいたので、もう指定しなくても`origin`の同名ブランチにpushされます。
+
+実行環境でpullして動かします。
+
+    dev% git up
+
+    （必要に応じてサービス再起動など）
+
+見た目の微調整など、簡単な変更は実行環境で加えてもOKです。
+
+	dev% edit ...
+	dev% edit ...
+	dev% edit ...
+
+    （必要に応じてサービス再起動など）
+
+    dev% git add ...
+    dev% git ci
+    dev% git push
+
+その場合は作業環境にコミットを取り込んでから作業を続けます。
+
+    sh% git up
+
+以上を繰り返し、機能を完成させます。
+
+メインブランチにマージする前に、コミットを整理しましょう。
+
+    sh% git ri master
+
+これでエディタが開き、`master`から分岐して以降のコミット一覧が出てきます。
+
+    pick 79e6485 Change window.open(image) to lightbox.
+	pick 2734870 Add jQuery lightbox plugin.
+    pick f5a6f2d Add onmouse effects to thumbnail.
+	pick 7e6a083 Adjust lightbox style.
+	pick df12c4b Adjust again.
+	pick 0590926 Yet again!
+    pick f5a6f2d Update ChangeLog.
+
+    # Rebase 129de80..07a3f47 onto 129de80
+    #
+    # Commands:
+    #  p, pick = use commit
+    #  r, reword = use commit, but edit the commit message
+    #  e, edit = use commit, but stop for amending
+    #  s, squash = use commit, but meld into previous commit
+    #  f, fixup = like "squash", but discard this commit's log message
+    #  x, exec = run command (the rest of the line) using shell
+    #
+    # If you remove a line here THAT COMMIT WILL BE LOST.
+    # However, if you remove everything, the rebase will be aborted.
+    #
+
+これを編集することで、コミットの順序を変えたりくっつけたりすることができます。並んでいるコミットは、時系列でいうといちばん下が最新です。
+
+たとえばこの例だと、lightboxを導入した（`79e6485`）けどjQueryプラグインを入れ忘れていた（`2734870`）ということですから、後者が先に来るべきです。また、スタイルが一発でうまく行かず、何度も調整（`7e6a083`, `df12c4b`, `0590926`）していますが、特段残すべき足跡とは言えないのでまとめたいところです。
+
+そこで、こう書き換えます。
+
+	pick 2734870 Add jQuery lightbox plugin.
+    pick 79e6485 Change window.open(image) to lightbox.
+	f 7e6a083 Adjust lightbox style.
+	f df12c4b Adjust again.
+	f 0590926 Yet again!
+    pick f5a6f2d Add onmouse effects to thumbnail.
+    pick f5a6f2d Update ChangeLog.
+
+これで保存終了すると、わかりやすい履歴ができます。（`git ri`(`git rebase -i`)は繰り返し行えます）
+
+順序の変更等でコンフリクトが発生したときはがんばって解決できればいいですが、よくわからなくなってしまったら`git rab`(`git rebase --abort`)で元の状態に戻るので大丈夫です。
+
+なお、コミットの分割は少し高度なので、始めから細かい単位でコミットし、わかりやすいメッセージを一行目に書くことをおすすめします。
+
+さて、`git ll`(`git log -p`)でパッチ付きの履歴を読み返し、自分はもちろん他人が読んで分かるという意味で納得が行くものになったら、メインブランチにマージします。まずメインブランチに移ってから、
+
+    sh% git sw master
+
+`git merge`を実行すると、指定したブランチにだけあるコミットが接ぎ木されます。
+
+    sh% git merge taro-feature1
+
+なお、`git merge --no-ff`とするとマージが行われたということが確実記録に残るので、区切りがわかっていいかもしれません。
+
+それでは、マージされた結果を実行環境で取得し、テストしてみましょう。
+
+    dev% git sw master
+    dev% git up
+
+問題なければ、もうブランチは消しても構いません。作業環境でこうします。
+
+    sh% git br -d taro-feature1
+    sh% git push origin :taro-feature1
+
+実行環境では、作業環境でrebaseされたあげくに`master`にマージされたということがわからないので、単に`git br -d`だとマージしていないよと言われてしまいます。でもあなたはマージが済んでいることを知っているので、強制削除して構いません。
+
+    dev% git br -D taro-feature1
+
+以上が、ブランチを活用した開発フローの一例です。プロジェクトによっては、本番用ブランチと開発ブランチなどが分かれていたりするので、プロジェクトメンバーと相談しながら運用を決めましょう。
+
+["A successful Git branching model"](https://www.google.co.jp/search?ie=UTF-8&q=%22A+successful+Git+branching+model%22)のようなフローも参考になります。ブランチの理解が深まってきたらプロジェクトで導入してみるのもいいでしょう。
+
 こんな時は/プラスアルファ
 -------------------------
 
