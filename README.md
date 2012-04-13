@@ -101,7 +101,13 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.nbr 'checkout -b'
 	git config --global alias.sw   checkout
 
-	git config --global alias.mup 'submodule update --init'
+	git config --global alias.mup   'submodule update --init'
+	git config --global alias.madd  'submodule add'
+	git config --global alias.mst   'submodule status --recursive'
+	git config --global alias.msync 'submodule sync'
+	git config --global alias.meach 'submodule each'
+	git config --global alias.mff   "\!sh -c 'for d in \"\${@-.}\"; do (cd \"\$d\" && [ -f .git ] && git fetch && git checkout origin); done' ."
+
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
 	git config --global alias.up  '!git um --rebase'
 
@@ -194,6 +200,19 @@ Git にこのファイルを使うように伝えます。
 - `mup = submodule update --init`
 
     覚え方: module update
+
+- `madd = submodule add`
+- `mst = submodule status --recursive`
+- `msync = submodule sync`
+- `meach = submodule each`
+
+- `mff = !sh -c 'for d in "${@-.}"; do (cd "$d" && [ -f .git ] && git fetch && git checkout origin); done' .`
+
+    覚え方: module fast-forward
+
+    指定ディレクトリ（複数可）もしくはカレントディレクトリのsubmoduleをリモート先端に引き上げる。
+
+    `git meach 'git mff'`として全submoduleをリモート先端に更新することも可能。
 
 - `um = !sh -c 'git pull \"$@\" && git mup' .`
 
