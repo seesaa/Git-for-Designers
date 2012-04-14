@@ -103,7 +103,7 @@ Git にこのファイルを使うように伝えます。
 
 	git config --global alias.mup   'submodule update --init --recursive'
 	git config --global alias.madd  'submodule add'
-	git config --global alias.mst   'submodule status --recursive'
+	git config --global alias.mst   '-p submodule status --recursive'
 	git config --global alias.msync 'submodule sync'
 	git config --global alias.meach 'submodule each'
 	git config --global alias.mff   "\!sh -c 'for d in \"\${@-.}\"; do (cd \"\$d\" && [ -f .git ] && git fetch && git checkout origin); done' ."
@@ -202,7 +202,7 @@ Git にこのファイルを使うように伝えます。
     覚え方: module update
 
 - `madd = submodule add`
-- `mst = submodule status --recursive`
+- `mst = -p submodule status --recursive`
 - `msync = submodule sync`
 - `meach = submodule each`
 
