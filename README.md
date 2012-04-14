@@ -101,7 +101,7 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.nbr 'checkout -b'
 	git config --global alias.sw   checkout
 
-	git config --global alias.mup   'submodule update --init'
+	git config --global alias.mup   'submodule update --init --recursive'
 	git config --global alias.madd  'submodule add'
 	git config --global alias.mst   'submodule status --recursive'
 	git config --global alias.msync 'submodule sync'
@@ -197,7 +197,7 @@ Git にこのファイルを使うように伝えます。
 
     coがあるのに敢えてこれを設けるのは、ブランチ切り替えは重要な操作なので自覚的に行うようにするためと、コマンドライン履歴で目立たせるため。
 
-- `mup = submodule update --init`
+- `mup = submodule update --init --recursive`
 
     覚え方: module update
 
