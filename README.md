@@ -85,7 +85,7 @@ Git にこのファイルを使うように伝えます。
 
 	git config --global push.default tracking
 
-	git config --global core.pager 'less -FSX'
+	git config --global core.pager 'less -FRX'
 
 	git config --global alias.st  '-p status'
 	git config --global alias.ss  '-p status -s'
