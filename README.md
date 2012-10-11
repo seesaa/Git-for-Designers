@@ -106,6 +106,7 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.mst   '-p submodule status --recursive'
 	git config --global alias.msync 'submodule sync'
 	git config --global alias.meach 'submodule each'
+	git config --global alias.mclean "\!sh -c 'git submodule foreach \"git clean \$@\"' ."
 	git config --global alias.mff   "\!sh -c 'for d in \"\${@-.}\"; do (cd \"\$d\" && [ -f .git ] && git fetch && git checkout origin); done' ."
 
 	git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
