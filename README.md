@@ -32,7 +32,7 @@ Git とは
 ### Git のバージョンをチェック
 
 	% git --version
-	git version 1.7.9.5
+	git version 1.8.0
 
 バージョン 1.6.x などの場合は、最寄りのエンジニアを呼んでバージョンを上げてもらって下さい。便利な機能が使えるようになります。
 
@@ -76,7 +76,9 @@ zsh  を使っている場合は `~/.zshenv` などに、
 
 Git にこのファイルを使うように伝えます。
 
-	git config --global core.excludesfile ~/.gitignore
+	git config --global core.excludesfile '~/.gitignore'
+
+（Git 1.6.5.4より古い場合は '' で括らないでください）
 
 以下をコピペしてターミナル画面に流してください。Git 生活を快適にします。
 一気に流しても大丈夫です。また、既に設定している人が実行しても問題ありません。
