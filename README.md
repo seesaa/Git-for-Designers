@@ -100,7 +100,7 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.dc  'diff --cached'
 
 	git config --global alias.br   branch
-	git config --global alias.nbr 'checkout -b'
+	git config --global alias.cb  'checkout -b'
 	git config --global alias.sw   checkout
 
 	git config --global alias.mup   'submodule update --init --recursive'
@@ -190,9 +190,9 @@ Git にこのファイルを使うように伝えます。
 
 - `br = branch`
 
-- `nbr = checkout -b`
+- `cb = checkout -b`
 
-    覚え方: new branch
+    覚え方: create branch
 
     新しいブランチのスタート。
 
@@ -601,7 +601,7 @@ push したつもりがエラーが出て push できていないこともある
 
 そこから開発する機能（あるいはバグ修正）用のブランチを作成して切り替えます。
 
-    sh% git nbr taro-feature1 master
+    sh% git cb taro-feature1 master
 
 ※自分のアカウント名を入れると分かりやすく、ぶつかる危険もないのでおすすめです。
 
@@ -612,7 +612,7 @@ push したつもりがエラーが出て push できていないこともある
 開発用の実行環境にログインし、作ったブランチを取得して切り替えます。
 
     dev% cd /home/seesaa/proj1
-    dev% git nbr taro-feature1 origin/taro-feature1
+    dev% git cb taro-feature1 origin/taro-feature1
 
 これで、リモート（`origin`）上の同じブランチを介して作業環境と実行環境で変更をやりとりできるようになりました。
 
