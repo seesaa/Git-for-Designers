@@ -156,6 +156,8 @@ Git にこのファイルを使うように伝えます。
 	git config --global alias.xp  'stash show -p'
 	git config --global alias.xup '!git xi && git up && git xo'
 
+	git config --global alias.www  browse-remote
+
 エイリアスは多分に好みの問題なのでこの例に囚われず、自分が便利でよく使うものを思い起こしやすい名前で登録してみてください。
 
 ### 上記エイリアスの解説
