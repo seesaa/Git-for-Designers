@@ -90,7 +90,7 @@ Git にこのファイルを使うように伝えます。
 	git config --global core.pager 'less -FRX'
 
 	git config --global alias.st  '-p status'
-	git config --global alias.ss  '-p status -s'
+	git config --global alias.ss  '-p status -sb'
 	git config --global alias.co   checkout
 	git config --global alias.ci  'commit -v'
 	git config --global alias.ca  'commit -av'
@@ -166,7 +166,7 @@ Git にこのファイルを使うように伝えます。
 
     `-p`はページャが起動する設定だが、`-F`付きのlessなので短い出力はページングなし。
 
-- `ss = -p status -s`
+- `ss = -p status -sb`
 
     覚え方: short status
 
