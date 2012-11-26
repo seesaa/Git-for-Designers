@@ -345,6 +345,10 @@ Git にこのファイルを使うように伝えます。
 
     popという用語はpushとの連関で混乱を招きやすいが、こうしてin/outに言い換えれば間違えない。
 
+- `www = browse-remote`
+
+    [git-browse-remote](https://github.com/motemen/git-browse-remote)を使うなら。
+
 最低限のワークフロー
 --------------------
 
